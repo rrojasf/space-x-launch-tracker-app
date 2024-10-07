@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getLaunches } from '@space-launch-tracking-app/core';
 import { Launch } from '@space-launch-tracking-app/shared-types';
+import { useMemo } from 'react';
 
 export const useLaunches = () => {
   const { data: launches, isLoading, error } = useQuery<Launch[]>({
@@ -10,9 +11,9 @@ export const useLaunches = () => {
     refetchOnWindowFocus: false,
   });
 
-  return {
+  return useMemo(() => ({
     launches,
     isLoading,
     error,
-  };
+  }), [launches, isLoading, error]);
 };
