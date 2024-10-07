@@ -1,0 +1,33 @@
+{
+  "name": "@space-launch-tracking-app/api-server",
+  "version": "1.0.0",
+  "author": "Robert Rojas <@rrojasf> rbrt.rojas@gmail.com",
+  "license": "ISC",
+  "main": "dist/server.js",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "test": "jest",
+    "clean": "rm -rf node_modules dist"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.12",
+    "@types/jest": "^26.0.23",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^15.12.2",
+    "jest": "^27.0.4",
+    "ts-jest": "^27.0.3",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^5.6.2"
+  }
+}
