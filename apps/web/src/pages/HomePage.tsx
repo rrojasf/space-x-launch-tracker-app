@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, VStack, Heading } from '@chakra-ui/react';
 import { RecentLaunches } from '../components/RecentLaunches';
+import { LatestTweets } from '../components/LatestTweets';
 import { Navigation } from '../components/Navigation';
 
 export const HomePage: React.FC = () => {
@@ -12,6 +13,7 @@ export const HomePage: React.FC = () => {
         </Heading>
         <Navigation />
         <RecentLaunches />
+        <LatestTweets />
       </VStack>
     </Box>
   );
