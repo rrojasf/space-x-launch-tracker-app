@@ -12,6 +12,7 @@ export interface Launch {
     webcast: string | null;
   };
   launchpad: string;
+  upcoming: boolean | null;
 }
 
 export type LaunchType = 'upcoming' | 'past' | 'all';
