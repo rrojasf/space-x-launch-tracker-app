@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import healthRouter from './routes/health';
+import launchRoutes from './routes/launchRoutes';
 import { errorHandler } from './middleware/errorHandler';
 
 dotenv.config();
@@ -20,6 +21,7 @@ app.use(express.json());
 
 // Routes
 app.use('/health', healthRouter);
+app.use('/api/launches', launchRoutes);
 
 // Error handling
 app.use(errorHandler);
