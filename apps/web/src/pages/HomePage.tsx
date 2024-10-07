@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, VStack, Heading } from '@chakra-ui/react';
+import { RecentLaunches } from '../components/RecentLaunches';
 
 export const HomePage: React.FC = () => {
   return (
@@ -8,6 +9,7 @@ export const HomePage: React.FC = () => {
         <Heading as="h1" textAlign="center">
           Space Launch Tracker
         </Heading>
+        <RecentLaunches />
       </VStack>
     </Box>
   );
