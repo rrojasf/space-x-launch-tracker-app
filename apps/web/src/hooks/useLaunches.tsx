@@ -21,6 +21,6 @@ export const useLaunches = () => {
       isLoading,
       error,
     }),
-    [launches, isLoading, error]
+    [launches, isLoading, error],
   );
 };

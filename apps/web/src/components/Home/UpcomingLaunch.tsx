@@ -9,7 +9,7 @@ const UpcomingLaunch: React.FC = () => {
   if (error) return <Text>Error loading upcoming launch</Text>;
 
   const upcomingLaunch = launchesResponse?.docs.findLast(
-    (launch) => launch.upcoming
+    (launch) => launch.upcoming,
   );
 
   if (!upcomingLaunch) return <Text>No upcoming launches found</Text>;

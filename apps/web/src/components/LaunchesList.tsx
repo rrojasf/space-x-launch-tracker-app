@@ -30,8 +30,6 @@ const LaunchesList: React.FC<LaunchesListProps> = ({
       itemsPerPage: LAUNCHES_PER_PAGE,
     });
 
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-
   return (
     <>
       {filter !== "favorites" && (

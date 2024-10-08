@@ -7,7 +7,7 @@ interface AppContextType {
   launches: Launch[];
   favorites: string[];
   loading: boolean;
-  error: any;
+  error: unknown;
   isFavorite: (launchId: string) => boolean;
   toggleFavorite: (launchId: string) => void;
 }

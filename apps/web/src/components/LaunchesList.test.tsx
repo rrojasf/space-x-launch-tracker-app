@@ -69,7 +69,7 @@ describe("LaunchesList Filter Functionality", () => {
   const renderLaunchesList = (initialFilter = "all") => {
     return render(
       <LaunchesList filter={initialFilter} onFilterChange={jest.fn()} />,
-      { wrapper: AllTheProviders }
+      { wrapper: AllTheProviders },
     );
   };
 

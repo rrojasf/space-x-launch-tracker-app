@@ -22,7 +22,7 @@ export function usePagination<T>({
 
   const totalPages = useMemo(
     () => Math.ceil(items.length / itemsPerPage),
-    [items.length, itemsPerPage]
+    [items.length, itemsPerPage],
   );
 
   const currentItems = useMemo(() => {

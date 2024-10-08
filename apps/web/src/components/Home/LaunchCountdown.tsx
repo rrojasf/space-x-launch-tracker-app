@@ -4,7 +4,6 @@ import { useAllLaunches } from "../../hooks/useAllLaunches";
 
 const LaunchCountdown: React.FC = () => {
   const { launchesResponse } = useAllLaunches();
-  const [countdown, setCountdown] = useState("");
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -14,7 +13,7 @@ const LaunchCountdown: React.FC = () => {
 
   useEffect(() => {
     const upcomingLaunch = launchesResponse?.docs.find(
-      (launch) => launch.upcoming
+      (launch) => launch.upcoming,
     );
     if (!upcomingLaunch) return;
 
@@ -25,7 +24,7 @@ const LaunchCountdown: React.FC = () => {
 
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
       );
       const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((difference % (1000 * 60)) / 1000);
@@ -37,13 +36,6 @@ const LaunchCountdown: React.FC = () => {
           minutes,
           seconds,
         });
-      }
-
-      setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-
-      if (difference < 0) {
-        clearInterval(interval);
-        setCountdown("Launched!");
       }
     }, 1000);
 

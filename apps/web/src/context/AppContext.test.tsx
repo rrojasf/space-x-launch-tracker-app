@@ -44,7 +44,7 @@ describe("AppContext", () => {
     const { getByTestId } = render(
       <AppProvider>
         <TestComponent />
-      </AppProvider>
+      </AppProvider>,
     );
 
     expect(getByTestId("launches-length").textContent).toBe("2");
@@ -66,7 +66,7 @@ describe("AppContext", () => {
     const { getByTestId } = render(
       <AppProvider>
         <TestComponent />
-      </AppProvider>
+      </AppProvider>,
     );
 
     expect(getByTestId("loading").textContent).toBe("true");
@@ -88,7 +88,7 @@ describe("AppContext", () => {
     const { getByTestId, getByText } = render(
       <AppProvider>
         <TestComponent />
-      </AppProvider>
+      </AppProvider>,
     );
 
     expect(getByTestId("favorites-length").textContent).toBe("1");
@@ -105,7 +105,7 @@ describe("AppContext", () => {
       .mockImplementation(() => {});
 
     expect(() => render(<TestComponent />)).toThrow(
-      "useAppContext must be used within an AppProvider"
+      "useAppContext must be used within an AppProvider",
     );
 
     consoleErrorSpy.mockRestore();

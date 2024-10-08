@@ -44,7 +44,7 @@ class ErrorBoundary extends React.Component<
             {this.state.error?.message || "An unexpected error occurred"}
           </Text>
           <Text color={"gray.500"} mb={6}>
-            We're sorry for the inconvenience. Please try again later.
+            We&apos;re sorry for the inconvenience. Please try again later.
           </Text>
 
           <Button

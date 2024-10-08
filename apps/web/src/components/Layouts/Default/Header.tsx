@@ -1,21 +1,19 @@
-import React from "react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Flex,
   Button,
+  Container,
+  Flex,
+  HStack,
   useColorMode,
   useColorModeValue,
-  Image,
-  HStack,
-  Container,
 } from "@chakra-ui/react";
+import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 export const Header: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const bgColor = useColorModeValue("white", "gray.800");
-  const textColor = useColorModeValue("gray.800", "white");
 
   return (
     <Container maxW="container.xl">
