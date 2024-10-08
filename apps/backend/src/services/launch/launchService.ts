@@ -25,7 +25,6 @@ export const fetchLaunchById = async (id: string): Promise<Launch | null> => {
 
 export const fetchAllLaunches = async (): Promise<Launch[]> => {
   try {
-    console.log("get", getBasicOptions());
     const response = await axios.post(
       `${SPACEX_API_URL}/launches/query`,
       getBasicOptions()

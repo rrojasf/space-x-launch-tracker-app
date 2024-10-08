@@ -2,7 +2,7 @@ export const getBasicOptions = () => ({
   query: {},
   options: {
     sort: {
-      flight_number: "desc",
+      date_utc: "desc",
     },
     limit: 10000,
     select: {
