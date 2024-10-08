@@ -9,7 +9,8 @@
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
     "test": "jest",
-    "clean": "rm -rf node_modules dist"
+    "clean": "rm -rf node_modules dist .turbo",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -17,16 +18,21 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "supertest": "^7.0.0",
+    "twitter-api-v2": "^1.18.0"
   },
   "devDependencies": {
+    "@space-launch-tracking-app/eslint-config": "*",
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.12",
-    "@types/jest": "^26.0.23",
+    "@types/jest": "27",
     "@types/morgan": "^1.9.2",
     "@types/node": "^15.12.2",
-    "jest": "^27.0.4",
-    "ts-jest": "^27.0.3",
+    "@types/supertest": "^6.0.2",
+    "jest": "27",
+    "supertest": "^7.0.0",
+    "ts-jest": "27",
     "ts-node-dev": "^1.1.6",
     "typescript": "^5.6.2"
   }
