@@ -14,5 +14,6 @@
     "jsx": "react",
     "incremental": true
   },
-  "include": ["src"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.js", ".eslintrc.js"]
 }
