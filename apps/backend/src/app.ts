@@ -27,7 +27,7 @@ app.use(
       }
       return callback(null, true);
     },
-  })
+  }),
 );
 app.use(morgan("dev"));
 app.use(express.json());

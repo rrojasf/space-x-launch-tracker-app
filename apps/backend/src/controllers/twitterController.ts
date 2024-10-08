@@ -4,7 +4,7 @@ import { fetchRecentTweets } from "../services/twitterService";
 export const getRecentTweets = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const tweets = await fetchRecentTweets();

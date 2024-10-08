@@ -8,7 +8,7 @@ import {
 export const getAllLaunches = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const type = req.query.type as string;
@@ -22,7 +22,7 @@ export const getAllLaunches = async (
 export const getLaunches = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const type = req.query.type as string;
@@ -36,7 +36,7 @@ export const getLaunches = async (
 export const getLaunchById = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   try {
     const id = req.params.id;

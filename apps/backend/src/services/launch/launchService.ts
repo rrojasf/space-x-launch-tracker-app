@@ -27,7 +27,7 @@ export const fetchAllLaunches = async (): Promise<Launch[]> => {
   try {
     const response = await axios.post(
       `${SPACEX_API_URL}/launches/query`,
-      getBasicOptions()
+      getBasicOptions(),
     );
     return response.data;
   } catch (error) {

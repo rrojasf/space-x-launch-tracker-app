@@ -10,7 +10,8 @@
     "build": "tsc",
     "test": "jest",
     "clean": "rm -rf node_modules dist .turbo",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "lint": "eslint --max-warnings 0"
   },
   "dependencies": {
     "axios": "^0.21.1",

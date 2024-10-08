@@ -1,6 +1,6 @@
 import request from "supertest";
-import app from "../src/app";
-import * as launchService from "../src/services/launch/launchService";
+import app from "../app";
+import * as launchService from "../services/launch/launchService";
 
 jest.mock("../src/services/launch/launchService");
 
