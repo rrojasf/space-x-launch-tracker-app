@@ -5,9 +5,11 @@ import { useFavorites } from "../hooks/useFavorites";
 
 interface AppContextType {
   launches: Launch[];
-  favorites: Launch[];
+  favorites: string[];
   loading: boolean;
   error: any;
+  isFavorite: (launchId: string) => boolean;
+  toggleFavorite: (launchId: string) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -24,10 +26,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   } = useAllLaunches();
 
   const launches = launchesResponse?.docs || [];
-  const { favorites } = useFavorites();
-  const favoriteLaunches = launches?.filter((launch) =>
-    favorites.includes(launch.id)
-  );
+  const { favorites, toggleFavorite, isFavorite } = useFavorites();
 
   return (
     <AppContext.Provider
@@ -35,7 +34,9 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         launches: launches || [],
         loading: isLoadingLaunches,
         error: errorLaunches,
-        favorites: favoriteLaunches || [],
+        favorites,
+        toggleFavorite,
+        isFavorite,
       }}
     >
       {children}
