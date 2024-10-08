@@ -134,4 +134,6 @@ const LaunchCard: React.FC<LaunchCardProps> = ({ launch }) => {
   );
 };
 
-export default LaunchCard;
+const MemoizedLaunchCard = React.memo(LaunchCard);
+
+export default MemoizedLaunchCard;
