@@ -1,6 +1,8 @@
 import { Button, Flex, Stack, VStack } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React from "react";
+import { LAUNCHES_PER_PAGE } from "../const";
 import { useAppContext } from "../context/AppContext";
+import { usePagination } from "../hooks/usePagination";
 import LaunchCard from "./LaunchCard";
 
 interface LaunchesListProps {
@@ -13,8 +15,6 @@ const LaunchesList: React.FC<LaunchesListProps> = ({
   onFilterChange,
 }) => {
   const { launches, favorites } = useAppContext();
-  const [currentPage, setCurrentPage] = useState(1);
-  const launchesPerPage = 10;
 
   const filteredLaunches = launches.filter((launch) => {
     if (filter === "all") return true;
@@ -24,12 +24,11 @@ const LaunchesList: React.FC<LaunchesListProps> = ({
     return true;
   });
 
-  const indexOfLastLaunch = currentPage * launchesPerPage;
-  const indexOfFirstLaunch = indexOfLastLaunch - launchesPerPage;
-  const currentLaunches = filteredLaunches.slice(
-    indexOfFirstLaunch,
-    indexOfLastLaunch
-  );
+  const { currentItems, currentPage, setCurrentPage, totalPages } =
+    usePagination({
+      items: filteredLaunches,
+      itemsPerPage: LAUNCHES_PER_PAGE,
+    });
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
@@ -50,25 +49,22 @@ const LaunchesList: React.FC<LaunchesListProps> = ({
       )}
 
       <VStack spacing={6} align="stretch">
-        {currentLaunches.map((launch) => (
+        {currentItems.map((launch) => (
           <LaunchCard launch={launch} key={launch.id} />
         ))}
       </VStack>
 
       <Flex justifyContent="center" mt={6}>
-        {Array.from(
-          { length: Math.ceil(filteredLaunches.length / launchesPerPage) },
-          (_, i) => (
-            <Button
-              key={i}
-              mx={1}
-              onClick={() => paginate(i + 1)}
-              colorScheme={currentPage === i + 1 ? "blue" : "gray"}
-            >
-              {i + 1}
-            </Button>
-          )
-        )}
+        {Array.from({ length: totalPages }, (_, i) => (
+          <Button
+            key={i}
+            mx={1}
+            onClick={() => setCurrentPage(i + 1)}
+            colorScheme={currentPage === i + 1 ? "blue" : "gray"}
+          >
+            {i + 1}
+          </Button>
+        ))}
       </Flex>
     </>
   );
