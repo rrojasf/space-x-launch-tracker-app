@@ -5,7 +5,12 @@ export interface Launch {
   static_fire_date_unix: number | null;
   net: boolean;
   window: number | null;
-  rocket: string;
+  rocket:
+    | string
+    | {
+        id: string;
+        name: string;
+      };
   success: boolean | null;
   failures: Failure[];
   details: string | null;
@@ -13,7 +18,12 @@ export interface Launch {
   ships: string[];
   capsules: string[];
   payloads: string[];
-  launchpad: string;
+  launchpad:
+    | string
+    | {
+        id: string;
+        name: string;
+      };
   flight_number: number;
   name: string;
   date_utc: string;
@@ -88,4 +98,18 @@ export interface Tweet {
   content: string;
   created_at: string;
   author: string;
+}
+
+export interface LaunchResponse {
+  docs: Launch[];
+  totalDocs: number;
+  offset: number;
+  limit: number;
+  totalPages: number;
+  page: number;
+  pagingCounter: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number | null;
+  nextPage: number | null;
 }
