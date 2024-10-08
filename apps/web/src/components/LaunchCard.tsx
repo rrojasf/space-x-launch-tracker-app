@@ -1,7 +1,20 @@
-import { Badge, Box, Button, Card, CardBody, CardFooter, Heading, Image, Stack, Text } from '@chakra-ui/react';
-import { Launch } from '@space-launch-tracking-app/shared-types';
-import React from 'react';
-import { useFavorites } from '../hooks/useFavorites';
+import {
+  Badge,
+  Box,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  Heading,
+  HStack,
+  Image,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { Launch } from "@space-launch-tracking-app/shared-types";
+import React from "react";
+import { useFavorites } from "../hooks/useFavorites";
+import InfoBox from "./InfoBox";
 
 interface LaunchCardProps {
   launch: Launch;
@@ -9,17 +22,27 @@ interface LaunchCardProps {
 
 const LaunchCard: React.FC<LaunchCardProps> = ({ launch }) => {
   const { isFavorite, toggleFavorite } = useFavorites();
-console.log('card', launch)
+  const launchpadName =
+    typeof launch.launchpad === "string"
+      ? launch.launchpad
+      : launch.launchpad?.name;
+
   return (
     <Card
-      direction={{ base: 'column', sm: 'row' }}
-      overflow='hidden'
-      variant='elevated'
-      _hover={{ boxShadow: 'xl', cursor: 'pointer', transform: 'scale(1.02)', transition: '0.3s ease-in-out' }}
+      direction={{ base: "column", sm: "row" }}
+      overflow="hidden"
+      variant="elevated"
+      _hover={{
+        boxShadow: "xl",
+        cursor: "pointer",
+        transform: "scale(1.02)",
+        transition: "0.3s ease-in-out",
+      }}
     >
-    <Box
-        maxW={{ base: '100%', sm: '200px' }}
-        w="200px"
+      <Box
+        maxW={{ base: "100%", sm: "300px" }}
+        w="300px"
+        h="300px"
         bg="gray.100"
         display="flex"
         justifyContent="center"
@@ -28,8 +51,6 @@ console.log('card', launch)
         {launch.links.patch.small ? (
           <Image
             objectFit="cover"
-            w="100%"
-            h="100%"
             src={launch.links.patch.small}
             alt={launch.name}
           />
@@ -41,28 +62,49 @@ console.log('card', launch)
             </Text>
           </Box>
         )}
-      </Box>      
+      </Box>
       <Stack>
         <CardBody>
-          <Heading size='md'>{launch.name}</Heading>
-          <Text py='2'>{new Date(launch.date_utc).toLocaleDateString()} {new Date(launch.date_utc).toLocaleTimeString()}</Text>
-          {launch.upcoming ? <Badge colorScheme='blue'>Upcoming</Badge> : 
-          <Badge colorScheme={launch.success ? 'green' : 'red'}>
-            {launch.success ? 'Success' : 'Failure'}
-          </Badge>}
+          <Heading size="md">{launch.name}</Heading>
+          <HStack py={4} gap={8}>
+            <InfoBox label="Mision" text={launch.name} />
+            <InfoBox
+              label="Date"
+              text={
+                new Date(launch.date_utc).toLocaleDateString() +
+                " " +
+                new Date(launch.date_utc).toLocaleTimeString()
+              }
+            />
+            <InfoBox label="Launchpad" text={launchpadName} />
+            <InfoBox
+              label="Status"
+              text={
+                launch.upcoming ? (
+                  <Badge colorScheme="blue">Upcoming</Badge>
+                ) : (
+                  <Badge colorScheme={launch.success ? "green" : "red"}>
+                    {launch.success ? "Success" : "Failure"}
+                  </Badge>
+                )
+              }
+            />
+          </HStack>
         </CardBody>
         <CardFooter>
-          <Button 
-            mt={2} 
+          <Button
+            mt={2}
             onClick={() => toggleFavorite(launch.id)}
-            colorScheme={isFavorite(launch.id) ? 'yellow' : 'gray'}
+            colorScheme={isFavorite(launch.id) ? "yellow" : "gray"}
           >
-            {isFavorite(launch.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+            {isFavorite(launch.id)
+              ? "Remove from Favorites"
+              : "Add to Favorites"}
           </Button>
         </CardFooter>
       </Stack>
-    </Card>  
-  )
-}
+    </Card>
+  );
+};
 
-export default LaunchCard
+export default LaunchCard;
