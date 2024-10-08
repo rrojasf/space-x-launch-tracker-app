@@ -22,7 +22,7 @@ describe("Backend API Tests", () => {
         .fill(null)
         .map((_, i) => ({ id: `${i}`, name: `Launch ${i}` }));
       (launchService.fetchLaunches as jest.Mock).mockResolvedValue(
-        mockLaunches
+        mockLaunches,
       );
 
       const response = await request(app).get("/api/launches");
@@ -34,7 +34,7 @@ describe("Backend API Tests", () => {
     it("should return a specific launch for getLaunchById", async () => {
       const mockLaunch = { id: "1", name: "Specific Launch" };
       (launchService.fetchLaunchById as jest.Mock).mockResolvedValue(
-        mockLaunch
+        mockLaunch,
       );
 
       const response = await request(app).get("/api/launches/1");
@@ -53,14 +53,14 @@ describe("Backend API Tests", () => {
   describe("Error Handling", () => {
     it("should handle errors properly", async () => {
       (launchService.fetchLaunches as jest.Mock).mockRejectedValue(
-        new Error("Test error")
+        new Error("Test error"),
       );
 
       const response = await request(app).get("/api/launches");
       expect(response.status).toBe(500);
       expect(response.body).toHaveProperty(
         "message",
-        "An unexpected error occurred"
+        "An unexpected error occurred",
       );
     });
   });
@@ -72,7 +72,7 @@ describe("Backend API Tests", () => {
         .set("Origin", process.env.FRONTEND_URL || "http://localhost:3000");
 
       expect(response.headers["access-control-allow-origin"]).toBe(
-        process.env.FRONTEND_URL || "http://localhost:3000"
+        process.env.FRONTEND_URL || "http://localhost:3000",
       );
     });
 
