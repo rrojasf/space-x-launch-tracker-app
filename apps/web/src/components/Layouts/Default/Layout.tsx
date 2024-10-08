@@ -1,14 +1,20 @@
-import React from 'react';
-import { Box, Container, Flex, VStack, useColorModeValue } from '@chakra-ui/react';
-import { Header } from './Header';
-import { Footer } from './Footer';
+import React from "react";
+import {
+  Box,
+  Container,
+  Flex,
+  VStack,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const bgColor = useColorModeValue('gray.50', 'gray.900');
+  const bgColor = useColorModeValue("gray.50", "gray.900");
 
   return (
     <Flex direction="column" minHeight="100vh" bg={bgColor}>
