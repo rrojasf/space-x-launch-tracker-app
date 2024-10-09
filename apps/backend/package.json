@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
+    "build": "tsup",
     "test": "jest",
     "clean": "rm -rf node_modules dist .turbo",
     "type-check": "tsc --noEmit",
@@ -21,6 +21,7 @@
     "helmet": "^4.6.0",
     "morgan": "^1.10.0",
     "supertest": "^7.0.0",
+    "tsup": "^8.3.0",
     "twitter-api-v2": "^1.18.0"
   },
   "devDependencies": {
