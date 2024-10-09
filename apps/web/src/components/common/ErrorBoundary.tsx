@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
 import React, { ErrorInfo } from "react";
 
 interface ErrorBoundaryProps {
@@ -31,31 +31,33 @@ class ErrorBoundary extends React.Component<
     if (this.state.hasError) {
       return (
         <Box textAlign="center" py={10} px={6}>
-          <Heading
-            display="inline-block"
-            as="h2"
-            size="2xl"
-            bgGradient="linear(to-r, teal.400, teal.600)"
-            backgroundClip="text"
-          >
-            Oops!
-          </Heading>
-          <Text fontSize="18px" mt={3} mb={2}>
-            {this.state.error?.message || "An unexpected error occurred"}
-          </Text>
-          <Text color={"gray.500"} mb={6}>
-            We&apos;re sorry for the inconvenience. Please try again later.
-          </Text>
-
-          <Button
-            colorScheme="teal"
-            bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
-            color="white"
-            variant="solid"
-            onClick={() => window.location.reload()}
-          >
-            Refresh Page
-          </Button>
+          <VStack spacing={4}>
+            <Heading
+              display="inline-block"
+              as="h2"
+              size="2xl"
+              bgGradient="linear(to-r, teal.400, teal.600)"
+              backgroundClip="text"
+            >
+              Oops! Something went wrong.
+            </Heading>
+            <Text fontSize="18px" mt={3} mb={2}>
+              {this.state.error?.message || "An unexpected error occurred"}
+            </Text>
+            <Text color={"gray.500"} mb={6}>
+              We&apos;re sorry for the inconvenience. Our team has been notified
+              and we&apos;re working on a fix.
+            </Text>
+            <Button
+              colorScheme="teal"
+              bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
+              color="white"
+              variant="solid"
+              onClick={() => window.location.reload()}
+            >
+              Refresh Page
+            </Button>
+          </VStack>
         </Box>
       );
     }
