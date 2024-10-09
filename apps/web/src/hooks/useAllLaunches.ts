@@ -8,11 +8,13 @@ export const useAllLaunches = () => {
     data: launchesResponse,
     isLoading,
     error,
+    refetch,
   } = useQuery<LaunchResponse, Error>({
     queryKey: ["allLaunches"],
     queryFn: getAllLaunches,
     staleTime: 10 * 60 * 1000, // Cache for 10 minutes
     refetchOnWindowFocus: false,
+    retry: 3,
   });
 
   return useMemo(
@@ -20,7 +22,8 @@ export const useAllLaunches = () => {
       launchesResponse,
       isLoading,
       error,
+      refetch,
     }),
-    [launchesResponse, isLoading, error],
+    [launchesResponse, isLoading, error, refetch],
   );
 };
