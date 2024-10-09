@@ -11,5 +11,10 @@
       "src": "/(.*)",
       "dest": "/api/index.ts"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "YARN_VERSION": "1.22.19"
+    }
+  }
 }
