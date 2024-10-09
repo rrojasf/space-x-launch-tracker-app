@@ -1,4 +1,4 @@
-import { Button, Flex, Stack, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, Stack, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 import { LAUNCHES_PER_PAGE } from "../const";
 import { useAppContext } from "../context/AppContext";
@@ -46,6 +46,17 @@ const LaunchesList: React.FC<LaunchesListProps> = ({
         </Stack>
       )}
 
+      {filter === "favorites" && currentItems.length === 0 && (
+        <Box textAlign="center" py={10}>
+          <Text fontSize="xl" fontWeight="bold" mb={4}>
+            No favorite launches yet
+          </Text>
+          <Text color="gray.600">
+            Add launches to your favorites to see them here!
+          </Text>
+        </Box>
+      )}
+
       <VStack spacing={6} align="stretch">
         {currentItems.map((launch) => (
           <LaunchCard launch={launch} key={launch.id} />
@@ -68,4 +79,4 @@ const LaunchesList: React.FC<LaunchesListProps> = ({
   );
 };
 
-export default LaunchesList;
+export default React.memo(LaunchesList);
