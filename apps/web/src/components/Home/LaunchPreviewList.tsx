@@ -6,7 +6,8 @@ const LaunchPreviewList: React.FC = () => {
   const { launchesResponse, isLoading, error } = useAllLaunches();
 
   if (isLoading) return <Text>Loading launches...</Text>;
-  if (error) return <Text>Error loading launches</Text>;
+  if (error)
+    return <Text>Error loading launches. Please try again later.</Text>;
 
   const launches = launchesResponse?.docs.slice(0, 5) || [];
 
@@ -41,4 +42,4 @@ const LaunchPreviewList: React.FC = () => {
   );
 };
 
-export default LaunchPreviewList;
+export default React.memo(LaunchPreviewList);
