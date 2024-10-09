@@ -4,12 +4,12 @@ import {
 } from "@space-launch-tracking-app/shared-types";
 import axios, { AxiosResponse } from "axios";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+const API_URL = process.env.API_URL || "http://localhost:5000/api";
 
 export const getLaunches = async (): Promise<Launch[]> => {
   try {
     const response: AxiosResponse<Launch[]> = await axios.get(
-      `${API_URL}/launches`,
+      `${API_URL}/launches`
     );
     return response.data;
   } catch (error) {
@@ -21,7 +21,7 @@ export const getLaunches = async (): Promise<Launch[]> => {
 export const getAllLaunches = async (): Promise<LaunchResponse> => {
   try {
     const response: AxiosResponse<{ docs: Launch[] }> = await axios.get(
-      `${API_URL}/launches/all`,
+      `${API_URL}/launches/all`
     );
 
     if (!response.data || !Array.isArray(response.data.docs)) {
