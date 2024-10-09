@@ -26,8 +26,8 @@ const corsOptions: cors.CorsOptions = {
     } else {
       callback(
         new Error(
-          "The CORS policy for this site does not allow access from the specified Origin."
-        )
+          "The CORS policy for this site does not allow access from the specified Origin.",
+        ),
       );
     }
   },
