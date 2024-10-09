@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsup",
+    "build": "tsc",
     "test": "jest",
     "clean": "rm -rf node_modules dist .turbo",
     "type-check": "tsc --noEmit",
